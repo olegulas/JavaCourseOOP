@@ -8,7 +8,10 @@ public class HotDrinksMachine implements VendingMachine {
         this.hotDrinksMachineList.add(el);
     }
 
-    @Override
+    public void getProduct(int name, int volume, int temperature) {
+        System.out.println("DummyMethod");
+    }
+
     public void getProduct(String name, int volume, int temperature) {
         HotDrinks hk = new HotDrinks(name, volume, temperature);
         boolean isFindDrink = false;

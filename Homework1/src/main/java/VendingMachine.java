@@ -1,3 +1,3 @@
 public interface VendingMachine {
-     void getProduct(String name, int volume, int temperature);
+     void getProduct(int name, int volume, int temperature);
 }
