@@ -2,7 +2,7 @@ package main.java;
 
 import java.util.Objects;
 
-public class HotDrinks extends Drinks {
+public class HotDrinks extends Products {
     protected int temp;
 
     public HotDrinks(String name, int volume, int temp) {
@@ -33,10 +33,9 @@ public class HotDrinks extends Drinks {
 
     @Override
     public String toString() {
-        return ("\nhash='" + super.hashCode() + '\'' +
+        return ("\nHotdrink{hash='" + super.hashCode() + '\'' +
                 ", name='" + super.getName() + '\'' +
                 ", volume=" + super.getVolume() +
                 ", temp=" + this.getTemp());
     }
-
 }
