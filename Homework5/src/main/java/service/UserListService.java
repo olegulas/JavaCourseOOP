@@ -1,13 +1,14 @@
 package main.java.service;
 
-import main.java.model.Score;
 import main.java.model.User;
+import main.java.model.UserListIterator;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class UserListService {
-    private List<User> userListBank;
+public class UserListService implements Iterable {
+    private final List<User> userListBank;
 
     public UserListService() {
         this.userListBank = new ArrayList<>();
@@ -21,15 +22,16 @@ public class UserListService {
         userListBank.add(user);
     }
 
-    public void calcResultScore(User user) {
-        double result = 0;
-        for (Score score : user.getScoreList()) {
-            result += score.getBalanceScore();
+    public void printUserListBank(){
+        UserListIterator itr = new UserListIterator(userListBank);
+        while (itr.hasNext()) {
+            System.out.println(itr.next().toString());
         }
-        user.setResultBalance(result);
     }
 
-    public void withdrawalScore(User user, int idScore, double payment){
-        this.userListBank.
+    @Override
+    public Iterator iterator() {
+        Iterator itr = new UserListIterator(userListBank);
+        return itr;
     }
 }

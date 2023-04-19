@@ -3,7 +3,7 @@ package main.java.model;
 public class Score {
     private int idScore;
     private int idUser = 0;
-    private double balanceScore = 0;
+    private double balanceScore;
 
     @Override
     public String toString() {

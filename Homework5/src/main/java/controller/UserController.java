@@ -6,7 +6,7 @@ import main.java.service.UserListService;
 import java.util.List;
 
 public class UserController {
-    private UserListService userListBank = new UserListService();
+    private final UserListService userListBank = new UserListService();
 
     public void addUserListBank(String name, int age){
         userListBank.addUserListBank(new User(name, age));
@@ -16,7 +16,7 @@ public class UserController {
         return userListBank.getUserListBank();
     }
 
-    public void withdrawalScore(double payment){
-
+    public void printUserListBank(){
+        userListBank.printUserListBank();
     }
 }

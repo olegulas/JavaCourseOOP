@@ -7,7 +7,7 @@ public class User implements UserInterface {
     private String name;
     private int age;
     private double resultBalance = 0;
-    private List<Score> scoreList = new ArrayList<>();
+    private final List<Score> scoreList = new ArrayList<>();
 
     public User(String name, int age) {
         this.name = name;
