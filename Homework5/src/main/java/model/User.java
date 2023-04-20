@@ -1,53 +1,32 @@
 package main.java.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Iterator;
 
-public class User implements UserInterface {
+public class User implements Iterator<Object> {
+    private int idUser;
     private String name;
-    private int age;
-    private double resultBalance = 0;
-    private final List<Score> scoreList = new ArrayList<>();
+    private double resultBalance;
 
-    public User(String name, int age) {
-        this.name = name;
-        this.age = age;
+    public User(int idUser, String name) {
+        this.setIdUser(idUser);
+        this.setName(name);
+        this.setResultBalance(0);
     }
 
-    public String getName() {
-        return name;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
+    public int getIdUser() {
+        return idUser;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public List<Score> getScoreList() {
-        return scoreList;
-    }
-
-    @Override
-    public void addScoreList(Score score) {
-        this.scoreList.add(score);
-        this.calcResultScore(this.getScoreList());
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", resultBalance=" + resultBalance +
-                ", scoreList=" + scoreList +
-                '}';
+    public String getName() {
+        return name;
     }
 
     public void setResultBalance(double resultBalance) {
@@ -59,11 +38,27 @@ public class User implements UserInterface {
     }
 
     @Override
-    public void calcResultScore(List<Score> scoreList) {
-        double result = 0;
-        for (Score score : scoreList) {
-            result += score.getBalanceScore();
-        }
-        this.setResultBalance(result);
+    public String toString() {
+        return "User{" +
+                "idUser='" + this.getIdUser() + '\'' +
+                "name='" + this.getName() + '\'' +
+                ", resultBalance=" + this.getResultBalance() +
+                '}';
+    }
+
+    int index;
+
+    @Override
+    public boolean hasNext() {
+        return index++ < 2;
+    }
+
+    @Override
+    public Object next() {
+        return switch (index) {
+            case 1 -> this.getIdUser();
+            case 2 -> this.getName();
+            default -> this.getResultBalance();
+        };
     }
 }

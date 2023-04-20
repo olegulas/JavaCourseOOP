@@ -1,8 +1,10 @@
 package main.java.model;
 
-public class Score {
+import java.util.Iterator;
+
+public class Score implements Iterator<Object> {
     private int idScore;
-    private int idUser = 0;
+    private int idUser;
     private double balanceScore;
 
     @Override
@@ -38,13 +40,33 @@ public class Score {
         this.balanceScore = balanceScore;
     }
 
-    public void withdrawalScore(double payment){
-        this.setBalanceScore(this.getBalanceScore() - payment);
+    public void withdrawalScore(double outPayment) {
+        this.setBalanceScore(this.getBalanceScore() - outPayment);
     }
 
-    public Score(int idScore, int idUser, double balanceScore) {
-        this.idScore = idScore;
+    public void depositFundsScore(double inPayment) {
+        this.setBalanceScore(this.getBalanceScore() + inPayment);
+    }
+
+    public Score(int idScore, int idUser, double balance) {
+        this.setIdScore(idScore);
         this.setIdUser(idUser);
-        this.balanceScore = balanceScore;
+        this.setBalanceScore(balance);
+    }
+
+    int index;
+
+    @Override
+    public boolean hasNext() {
+        return index++ < 3;
+    }
+
+    @Override
+    public Object next() {
+        return switch (index) {
+            case 1 -> this.getIdScore();
+            case 2 -> this.getIdUser();
+            default -> this.getBalanceScore();
+        };
     }
 }

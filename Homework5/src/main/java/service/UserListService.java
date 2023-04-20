@@ -1,13 +1,10 @@
 package main.java.service;
 
 import main.java.model.User;
-import main.java.model.UserListIterator;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class UserListService implements Iterable {
+public class UserListService {
     private final List<User> userListBank;
 
     public UserListService() {
@@ -18,20 +15,23 @@ public class UserListService implements Iterable {
         return userListBank;
     }
 
-    public void addUserListBank(User user) {
-        userListBank.add(user);
+    public void addUserListBank(String name) {
+        userListBank.add(new User(userListBank.size() + 1, name));
     }
 
-    public void printUserListBank(){
-        UserListIterator itr = new UserListIterator(userListBank);
-        while (itr.hasNext()) {
-            System.out.println(itr.next().toString());
+    public void printUserListBank() {
+        for (User user : userListBank) {
+            System.out.println(user);
         }
+
     }
 
-    @Override
-    public Iterator iterator() {
-        Iterator itr = new UserListIterator(userListBank);
-        return itr;
+    public boolean findUserUserListBank(int idUser) {
+        for (User user : userListBank) {
+            if (user.getIdUser() == idUser) {
+                return true;
+            }
+        }
+        return false;
     }
 }

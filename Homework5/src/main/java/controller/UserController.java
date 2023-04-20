@@ -8,15 +8,19 @@ import java.util.List;
 public class UserController {
     private final UserListService userListBank = new UserListService();
 
-    public void addUserListBank(String name, int age){
-        userListBank.addUserListBank(new User(name, age));
+    public void addUserListBank(String name) {
+        userListBank.addUserListBank(name);
     }
 
-    public List<User> getUserListBank(){
+    public List<User> getUserListBank() {
         return userListBank.getUserListBank();
     }
 
-    public void printUserListBank(){
+    public void printUserListBank() {
         userListBank.printUserListBank();
+    }
+
+    public boolean findUserUserListBank(int idUser) {
+        return userListBank.findUserUserListBank(idUser);
     }
 }
