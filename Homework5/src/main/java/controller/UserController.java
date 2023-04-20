@@ -23,4 +23,8 @@ public class UserController {
     public boolean findUserUserListBank(int idUser) {
         return userListBank.findUserUserListBank(idUser);
     }
+
+    public void removeUserListBank(int idUser){
+        userListBank.removeUserListBank(idUser);
+    }
 }

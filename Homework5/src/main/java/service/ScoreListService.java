@@ -2,6 +2,7 @@ package main.java.service;
 
 import main.java.model.Score;
 import main.java.model.User;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,10 +21,13 @@ public class ScoreListService implements Iterator<Score> {
 
     public void addScoreUserListBank(List<User> usrList, int idUser, double balance) {
         boolean isExistUser = false;
+        User usr;
         for (User user : usrList) {
             if (user.getIdUser() == idUser) {
                 isExistUser = true;
+                usr = usrList.get(idUser - 1);
                 scoreUserListBank.add(new Score(scoreUserListBank.size() + 1, idUser, balance));
+                usr.setResultBalance(usr.getResultBalance() + balance);
             }
         }
         if (!isExistUser) System.out.printf("User ID:%d not exist\n", idUser);
@@ -33,6 +37,7 @@ public class ScoreListService implements Iterator<Score> {
         for (Score score : scoreUserListBank) {
             System.out.println(score.toString());
         }
+        System.out.println();
     }
 
     int index;
