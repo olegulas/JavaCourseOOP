@@ -38,5 +38,9 @@ public class UserView {
         scoreList.addScoreUserListBank(6, 5000);
         scoreList.printScoreUserListBank();
         userList.printUserListBank();
+
+        scoreList.withdrawalScoreUser(6,4,100);
+        scoreList.printScoreUserListBank();
+        System.out.println();
     }
 }

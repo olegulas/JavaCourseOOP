@@ -25,4 +25,13 @@ public class ScoreController {
     public void conCatUsersScores(List<User> userListBank){
         this.userList = userListBank;
     }
+
+    public void withdrawalScoreUser(int idUser, int idScore, double payment){
+        scoreUserListBank.withdrawalScoreUser(idUser, idScore, payment);
+    }
+
+    public void depositFundsScoreUser(int idUser, int idScore, double payment) {
+        scoreUserListBank.depositFundsScoreUser(idUser, idScore, payment);
+    }
+
 }

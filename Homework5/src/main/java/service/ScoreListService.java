@@ -42,6 +42,38 @@ public class ScoreListService implements Iterator<Score> {
         System.out.printf("User ID:%d not exist\n", idUser);
     }
 
+    public void withdrawalScoreUser(int idUser, int idScore, double payment) {
+        Iterator<Score> iterator = getListUserScores(idUser).iterator();
+        while (iterator.hasNext()) {
+            Score score = iterator.next();
+            if (score.getIdScore() == idScore) {
+                score.withdrawalScore(payment);
+            }
+        }
+    }
+
+    public void depositFundsScoreUser(int idUser, int idScore, double payment) {
+        Iterator<Score> iterator = getListUserScores(idUser).iterator();
+        while (iterator.hasNext()) {
+            Score score = iterator.next();
+            if (score.getIdScore() == idScore) {
+                score.depositFundsScore(payment);
+            }
+        }
+    }
+
+    public List<Score> getListUserScores(int idUser) {
+        List<Score> userListScores = new ArrayList<>();
+        Iterator<Score> iterator = scoreUserListBank.iterator();
+        while (iterator.hasNext()) {
+            Score user = iterator.next();
+            if (user.getIdUser() == idUser) {
+                userListScores.add(user);
+            }
+        }
+        return userListScores;
+    }
+
     public void printScoreUserListBank() {
         for (Score score : scoreUserListBank) {
             System.out.println(score.toString());
