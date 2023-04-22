@@ -18,10 +18,6 @@ public class ScoreListService implements Iterator<Score> {
         this.scoreUserListBank = new ArrayList<>();
     }
 
-    public List<Score> getScoreUserListBank() {
-        return scoreUserListBank;
-    }
-
     public int getIndScore() {
         return indScore;
     }
@@ -43,9 +39,7 @@ public class ScoreListService implements Iterator<Score> {
     }
 
     public void withdrawalScoreUser(int idUser, int idScore, double payment) {
-        Iterator<Score> iterator = getListUserScores(idUser).iterator();
-        while (iterator.hasNext()) {
-            Score score = iterator.next();
+        for (Score score : getListUserScores(idUser)) {
             if (score.getIdScore() == idScore) {
                 score.withdrawalScore(payment);
             }
@@ -53,9 +47,7 @@ public class ScoreListService implements Iterator<Score> {
     }
 
     public void depositFundsScoreUser(int idUser, int idScore, double payment) {
-        Iterator<Score> iterator = getListUserScores(idUser).iterator();
-        while (iterator.hasNext()) {
-            Score score = iterator.next();
+        for (Score score : getListUserScores(idUser)) {
             if (score.getIdScore() == idScore) {
                 score.depositFundsScore(payment);
             }
@@ -64,9 +56,7 @@ public class ScoreListService implements Iterator<Score> {
 
     public List<Score> getListUserScores(int idUser) {
         List<Score> userListScores = new ArrayList<>();
-        Iterator<Score> iterator = scoreUserListBank.iterator();
-        while (iterator.hasNext()) {
-            Score user = iterator.next();
+        for (Score user : scoreUserListBank) {
             if (user.getIdUser() == idUser) {
                 userListScores.add(user);
             }
@@ -80,7 +70,6 @@ public class ScoreListService implements Iterator<Score> {
         }
         System.out.println();
     }
-
 
     int index;
 

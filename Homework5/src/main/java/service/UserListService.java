@@ -19,14 +19,6 @@ public class UserListService implements Iterator<User> {
         return userListBank;
     }
 
-    public static int getIndexUser() {
-        return indexUser;
-    }
-
-    public static void setIndexUser(int indexUser) {
-        UserListService.indexUser = indexUser;
-    }
-
     public void addUserListBank(String name) {
         indexUser++;
         userListBank.add(new User(indexUser, name));
@@ -40,25 +32,14 @@ public class UserListService implements Iterator<User> {
     }
 
     public void removeUserListBank(int idUser) {
-        boolean isExistUser = false;
         Iterator<User> iterator = userListBank.iterator();
-        while (iterator.hasNext()){
-            if (iterator.next().getIdUser() == idUser){
+        while (iterator.hasNext()) {
+            if (iterator.next().getIdUser() == idUser) {
                 iterator.remove();
-                isExistUser = true;
                 return;
             }
         }
-        if (!isExistUser) System.out.printf("User ID:%d not exist\n", idUser);
-    }
-
-    public boolean findUserUserListBank(int idUser) {
-        for (User user : userListBank) {
-            if (user.getIdUser() == idUser) {
-                return true;
-            }
-        }
-        return false;
+        System.out.printf("User ID:%d not exist\n", idUser);
     }
 
     int index;
@@ -73,8 +54,4 @@ public class UserListService implements Iterator<User> {
         return userListBank.get(index);
     }
 
-    @Override
-    public void remove() {
-        userListBank.remove(this.userListBank); // неправильно
-    }
 }

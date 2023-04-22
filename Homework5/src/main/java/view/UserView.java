@@ -13,6 +13,7 @@ public class UserView {
         ScoreController scoreList = new ScoreController();
         scoreList.conCatUsersScores(userList.getUserListBank());
 
+        System.out.println("Добавляем пользователей и их счета");
         userList.addUserListBank("Иван");
         userList.addUserListBank("Степа");
         userList.addUserListBank("Сергей");
@@ -24,23 +25,31 @@ public class UserView {
         scoreList.addScoreUserListBank(5, 2000);
 
         userList.printUserListBank();
+        System.out.println("Просматриваем счета пользователей");
         scoreList.printScoreUserListBank();
 
+        System.out.println("Удаляем пользователя № 4");
         userList.removeUserListBank(4);
         userList.printUserListBank();
 
+        System.out.println("Добавляем пользователя Георгий");
         userList.addUserListBank("Георгий");
         userList.printUserListBank();
+
+        System.out.println("Удаляем пользователя № 0 и 1");
         userList.removeUserListBank(1);
         userList.removeUserListBank(0);
         userList.printUserListBank();
+
+        System.out.println("Добавляем счета пользователю № 6");
         scoreList.addScoreUserListBank(6, 2000);
         scoreList.addScoreUserListBank(6, 5000);
         scoreList.printScoreUserListBank();
         userList.printUserListBank();
 
+        System.out.println("Списываем/начисляем на счёт пользователя № 6");
         scoreList.withdrawalScoreUser(6,4,100);
+        scoreList.depositFundsScoreUser(6,5,5000);
         scoreList.printScoreUserListBank();
-        System.out.println();
     }
 }
