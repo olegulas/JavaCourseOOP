@@ -9,6 +9,8 @@ import java.util.List;
 public class UserListService implements Iterator<User> {
     private final List<User> userListBank;
 
+    private static int indexUser = 0;
+
     public UserListService() {
         this.userListBank = new ArrayList<>();
     }
@@ -17,8 +19,17 @@ public class UserListService implements Iterator<User> {
         return userListBank;
     }
 
+    public static int getIndexUser() {
+        return indexUser;
+    }
+
+    public static void setIndexUser(int indexUser) {
+        UserListService.indexUser = indexUser;
+    }
+
     public void addUserListBank(String name) {
-        userListBank.add(new User(userListBank.size() + 1, name));
+        indexUser++;
+        userListBank.add(new User(indexUser, name));
     }
 
     public void printUserListBank() {
@@ -35,6 +46,7 @@ public class UserListService implements Iterator<User> {
             if (iterator.next().getIdUser() == idUser){
                 iterator.remove();
                 isExistUser = true;
+                return;
             }
         }
         if (!isExistUser) System.out.printf("User ID:%d not exist\n", idUser);
@@ -63,6 +75,6 @@ public class UserListService implements Iterator<User> {
 
     @Override
     public void remove() {
-        userListBank.remove(this.userListBank);
+        userListBank.remove(this.userListBank); // неправильно
     }
 }

@@ -15,7 +15,7 @@ public class ScoreController {
     }
 
     public void addScoreUserListBank(int idUser, double balance) {
-        scoreUserListBank.addScoreUserListBank(userList,idUser, balance);
+        scoreUserListBank.addScoreUserListBank(userList, idUser, balance);
     }
 
     public void printScoreUserListBank() {

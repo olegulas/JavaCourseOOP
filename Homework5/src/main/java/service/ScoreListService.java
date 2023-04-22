@@ -11,7 +11,10 @@ import java.util.List;
 public class ScoreListService implements Iterator<Score> {
     private final List<Score> scoreUserListBank;
 
+    private int indScore = 0;
+
     public ScoreListService() {
+        this.setIndScore(0);
         this.scoreUserListBank = new ArrayList<>();
     }
 
@@ -19,18 +22,24 @@ public class ScoreListService implements Iterator<Score> {
         return scoreUserListBank;
     }
 
+    public int getIndScore() {
+        return indScore;
+    }
+
+    public void setIndScore(int indScore) {
+        this.indScore = indScore;
+    }
+
     public void addScoreUserListBank(List<User> usrList, int idUser, double balance) {
-        boolean isExistUser = false;
-        User usr;
         for (User user : usrList) {
             if (user.getIdUser() == idUser) {
-                isExistUser = true;
-                usr = usrList.get(idUser - 1);
-                scoreUserListBank.add(new Score(scoreUserListBank.size() + 1, idUser, balance));
-                usr.setResultBalance(usr.getResultBalance() + balance);
+                setIndScore(getIndScore() + 1);
+                scoreUserListBank.add(new Score(getIndScore(), idUser, balance));
+                user.setResultBalance(user.getResultBalance() + balance);
+                return;
             }
         }
-        if (!isExistUser) System.out.printf("User ID:%d not exist\n", idUser);
+        System.out.printf("User ID:%d not exist\n", idUser);
     }
 
     public void printScoreUserListBank() {
@@ -39,6 +48,7 @@ public class ScoreListService implements Iterator<Score> {
         }
         System.out.println();
     }
+
 
     int index;
 

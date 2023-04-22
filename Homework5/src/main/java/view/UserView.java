@@ -31,5 +31,12 @@ public class UserView {
 
         userList.addUserListBank("Георгий");
         userList.printUserListBank();
+        userList.removeUserListBank(1);
+        userList.removeUserListBank(0);
+        userList.printUserListBank();
+        scoreList.addScoreUserListBank(6, 2000);
+        scoreList.addScoreUserListBank(6, 5000);
+        scoreList.printScoreUserListBank();
+        userList.printUserListBank();
     }
 }
